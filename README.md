@@ -96,7 +96,19 @@ dotnet run
 
 ### Database initialization
 
+#### Dotnet Tooling
+
+Install the EF Core tools globally and create the initial migration and update the database:
+```bash
+dotnet tool install --global dotnet-ef
+cd CatchUpPlatform.API
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
 The application automatically applies pending EF Core migrations on startup via `Database.Migrate()`.
+
+Note: The database must exist before running the application. If it does not exist, create it manually or use a MySQL client to create an empty database.
 
 - **Development**: Applies the current schema to the configured MySQL database.
 - **First-time setup**: Ensure MySQL is running and the connection string points to an existing (empty or non-empty) database.
@@ -107,8 +119,8 @@ The application automatically applies pending EF Core migrations on startup via 
 
 With the included launch profiles, Scalar is commonly available at:
 
-- `http://localhost:5128/scalar`
-- `https://localhost:7234/scalar`
+- `http://localhost:5121/scalar`
+- `https://localhost:7192/scalar`
 
 The generated OpenAPI document is available at `/openapi/v1.json`.
 
